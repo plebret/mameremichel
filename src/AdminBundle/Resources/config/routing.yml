@@ -1,0 +1,8 @@
+AdminBundle_admin_admin_bundle_tune:
+    resource: "@AdminBundle/Controller/Tune/"
+    type:     admingenerator
+    prefix:   /tune
+
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
