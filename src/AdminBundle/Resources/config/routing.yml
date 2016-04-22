@@ -1,3 +1,23 @@
+AdminBundle_admin_admin_bundle_subscriber:
+    resource: "@AdminBundle/Controller/Subscriber/"
+    type:     admingenerator
+    prefix:   /subscriber
+
+AdminBundle_admin_admin_bundle_contact:
+    resource: "@AdminBundle/Controller/Contact/"
+    type:     admingenerator
+    prefix:   /contact
+
+AdminBundle_admin_admin_bundle_player:
+    resource: "@AdminBundle/Controller/Player/"
+    type:     admingenerator
+    prefix:   /player
+
+AdminBundle_admin_admin_bundle_event:
+    resource: "@AdminBundle/Controller/Event/"
+    type:     admingenerator
+    prefix:   /event
+
 AdminBundle_admin_admin_bundle_tune:
     resource: "@AdminBundle/Controller/Tune/"
     type:     admingenerator

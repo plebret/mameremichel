@@ -5,7 +5,37 @@ params:
     concurrency_lock: ~
     bundle_name: AdminBundle
     pk_requirement: ~
-    fields: ~
+    i18n_catalog: mam_admin
+#    stylesheets:
+#      - bundles/a2lixtranslationform/css/a2lix_translation_default.css
+#    javascripts:
+#      - /bundles/a2lixtranslationform/js/a2lix_translation_default.js
+    fields:
+        audioFiles:
+#            formType: Admingenerator\FormExtensionsBundle\Form\Type\BootstrapFieldsetCollectionType  #s2a_collection_fieldset
+#            dbType: collection
+            formType: Symfony\Component\Form\Extension\Core\Type\TextareaType #Admingenerator\FormExtensionsBundle\Form\Type\BootstrapFieldsetCollectionType  #s2a_elastic_textarea #Admingenerator\FormExtensionsBundle\Form\Type\BootstrapFieldsetCollectionType #admingenerator.form.extensions.type.bootstrap_fieldset_collection # s2a_collection_fieldset #Symfony\Component\Form\Extension\Core\Type\CollectionType
+#            dbType: collection
+            addFormOptions:
+                required: false
+                allow_add: true
+                allow_delete: true
+                prototype: true
+                entry_type: FM\ElfinderBundle\Form\Type\ElFinderType
+#                entry_options:
+ 
+        translations:
+            formType: A2lix\TranslationFormBundle\Form\Type\TranslationsType #a2lix_translations  
+            
+        type:
+            formType: Symfony\Component\Form\Extension\Core\Type\ChoiceType
+            addFormOptions:
+                required: true
+                choices: 
+                    tune.type.options.studio: studio
+                    tune.type.options.live: live
+                    tune.type.options.demo: demo
+    
     object_actions:
         delete: ~
     batch_actions:
@@ -13,35 +43,44 @@ params:
 builders:
     list:
         params:
-            title: List for AdminBundle
-            display: ~
+            title: tune.list.title
+            display: [title,type]
             actions:
                 new: ~
             object_actions:
                 edit: ~
                 delete: ~
     excel:
-        params: ~
+        params: 
+            display: [title, lyrics]
         filename: ~
         filetype: ~
     new:
         params:
             title: New object for AdminBundle
-            display: [title]
+            display: #[title, audioFiles, translations]
+                Generic: 
+                    "row1 col-md-6": [title, type, author, compositor, audioFiles]
+                NONE:
+                    "row2 col-md-12": [translations]
             actions:
                 save: ~
                 list: ~
     edit:
         params:
             title: "You're editing the object \"%object%\"|{ %object%: Tune.title }|"
-            display: [title]
+            display: #[title, audioFiles, translations]
+                Generic: 
+                    "row1 col-md-6": [title, type, author, compositor, audioFiles]
+                NONE:
+                    "row2 col-md-12": [translations]
             actions:
                 save: ~
                 list: ~
     show:
         params:
             title: "You're viewing the object \"%object%\"|{ %object%: Tune.title }|"
-            display: ~
+            display: [title, translations]
             actions:
                 list: ~
                 new: ~

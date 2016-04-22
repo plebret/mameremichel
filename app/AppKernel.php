@@ -17,10 +17,15 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             
+            new Admingenerator\FormBundle\AdmingeneratorFormBundle(),
+            new Admingenerator\FormExtensionsBundle\AdmingeneratorFormExtensionsBundle(),            
             new Admingenerator\GeneratorBundle\AdmingeneratorGeneratorBundle($this),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new AdminBundle\AdminBundle(),
+            new FM\ElfinderBundle\FMElfinderBundle(),
+            new Knp\DoctrineBehaviors\Bundle\DoctrineBehaviorsBundle(),
+            new A2lix\TranslationFormBundle\A2lixTranslationFormBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

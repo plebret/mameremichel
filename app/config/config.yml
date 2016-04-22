@@ -8,6 +8,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    locales: [ fr, en, es ]
 
 framework:
     #esi:             ~
@@ -32,6 +33,7 @@ framework:
     fragments:       ~
     http_method_override: true
     assets: ~
+    
 
 # Twig Configuration
 twig:
@@ -75,4 +77,42 @@ admingenerator_generator:
     use_doctrine_odm:     false
 
     # add this line if you want to use assetic
-    base_admin_template: AdmingeneratorGeneratorBundle::base_uncompressed.html.twig
+    base_admin_template: AdminBundle::base.html.twig
+
+#    knp_menu_alias: mam_admin_sidebar
+    
+# Default bundle configuration
+admingenerator_form_extensions:
+    include_jquery:           true
+    include_jqueryui:         true
+    include_momentjs:         false
+    include_blueimp:          false 
+    include_gmaps:            false
+  
+fm_elfinder:
+    instances:
+        default:
+            locale: %locale% # defaults to current request locale
+            editor: form # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+            #editor_template: custom template for your editor # default null
+            #path_prefix: / # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+            #theme: smoothness # jquery theme, default is 'smoothness'
+            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            #visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined, defines root filemanager directories
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hides dotfiles
+                        driver: LocalFileSystem
+                        path: uploads
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg', 'audio/aac', 'audio/mp4', 'audio/mpeg', 'audio/ogg', 'audio/wav', 'audio/webm']
+                        upload_deny: ['all']
+                        upload_max_size: 10M # also file upload sizes restricted in php.ini
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
+    
+a2lix_translation_form:
+    locales: %locales%
+    default_locale: %locale%

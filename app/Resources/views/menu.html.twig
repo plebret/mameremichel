@@ -1,0 +1,37 @@
+{#
+    Navigation include
+#}
+  
+{% set route_name = app.request.attributes.get('_route') %}  
+
+{%
+    set navigation = [
+		{
+            "route_name":"homepage",     
+            "match_routes":["homepage"],                                       
+            "caption":('menu.home'|trans({}))    
+        },
+		{
+            "route_name":"tunes",     
+            "match_routes":["tunes","tune"],                                       
+            "caption":('menu.music'|trans({}))    
+        }
+    ]
+%}
+  
+  <div class="masthead clearfix">
+    <div class="inner">
+      <h3 class="masthead-brand">{{'site.title'|trans}}</h3>
+      <nav>
+        <ul class="nav masthead-nav">
+            {% for item in navigation %}
+                <li class="{% if route_name in item.match_routes %}active{% endif %}"><a href="{% if item.route_name is defined %}{{path(item.route_name,{})}} {% else %}{{ item.href }}{% endif %}">{{ item.caption|raw }}</a></li>
+            {% endfor %}  
+        {#    
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Contact</a></li>#}
+        </ul>
+      </nav>
+    </div>
+  </div>

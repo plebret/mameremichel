@@ -1,0 +1,98 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: AppBundle\Entity\Event
+    namespace_prefix: 
+    concurrency_lock: ~
+    bundle_name: AdminBundle
+    pk_requirement: ~
+    fields:
+        translations:
+            formType: A2lix\TranslationFormBundle\Form\Type\TranslationsType
+        date:
+            formType: Symfony\Component\Form\Extension\Core\Type\DateType
+            formOptions:
+                widget: single_text
+        image:
+            formType: FM\ElfinderBundle\Form\Type\ElFinderType
+            addFormOptions:
+                attr:
+                    class: form-control
+        videoFiles:
+            formType: Symfony\Component\Form\Extension\Core\Type\TextareaType
+            addFormOptions:
+                required: false
+                allow_add: true
+                allow_delete: true
+                prototype: true
+                entry_type: Symfony\Component\Form\Extension\Core\Type\TextType
+        pictureFiles:
+            formType: Symfony\Component\Form\Extension\Core\Type\TextareaType
+            addFormOptions:
+                required: false
+                allow_add: true
+                allow_delete: true
+                prototype: true
+                entry_type: FM\ElfinderBundle\Form\Type\ElFinderType
+        tunes:
+            formType: Admingenerator\FormExtensionsBundle\Form\Type\DoubleListEntityType
+            addFormOptions:
+#                help: You can order our selection by drag & drop each element
+                choice_label: title
+                
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: List for AdminBundle
+            display: [ label, date, position ]
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    new:
+        params:
+            title: New object for AdminBundle
+            display:    # [label, date, position, image, [translations]]
+                Generic: 
+                    "row1 col-md-6": [label, date, position, image]
+                NONE:
+                    "row2 col-md-12": [translations]
+                REPORT:
+                    "row1 col-md-6": [videoFiles, pictureFiles, tunes]
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Event.label }|"
+            display: 
+                Generic: 
+                    "row1 col-md-6": [label, date, position, image]
+                NONE:
+                    "row2 col-md-12": [translations]
+                REPORT:
+                    "row1 col-md-6": [videoFiles, pictureFiles, tunes]
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Event.label }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~

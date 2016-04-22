@@ -1,0 +1,20 @@
+menu:
+    tune:
+        label: Tunes
+    event:
+        label: Events
+    player:
+        label: Band's members
+    contact:
+        label: Contacts
+    subscriber:
+        label: Subscribers
+        
+tune:
+    type:
+        options:
+            studio: Studio
+            demo: Demo
+            live: Live
+    list:
+        title: List of tunes

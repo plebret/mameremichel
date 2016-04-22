@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>{{tune.title}}</h1>
+<strong>{{tune.type}}</strong>
+<h2>Musique</h2>
+<audio controls>
+    {% for audioFile in tune.audioFiles %}
+        <source src="{{audioFile}}" type="audio/mpeg">
+    {% endfor %}
+  Your browser does not support the audio tag.
+</audio>
+<h2>Paroles</h2>
+<p>
+    {{tune.getLyrics|nl2br}}
+</p>
+{% endblock %}

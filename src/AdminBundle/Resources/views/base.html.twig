@@ -1,0 +1,19 @@
+{% extends "AdmingeneratorGeneratorBundle::base_uncompressed.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% include 'AdmingeneratorFormExtensionsBundle::stylesheets_assetic_less.html.twig' %}
+    {% if form is defined and form is not empty %}
+        {{ form_css(form) }}
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% include 'AdmingeneratorFormExtensionsBundle::javascripts_assetic_less.html.twig' %}
+    {% if form is defined and form is not empty %}
+        {{ form_js(form) }}
+    {% endif %}
+{% endblock %}

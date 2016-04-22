@@ -5,3 +5,6 @@ admin:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+    
+elfinder:
+     resource: "@FMElfinderBundle/Resources/config/routing.yml"

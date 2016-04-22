@@ -1,4 +1,14 @@
+parameters:
+    admin.menu.builder.class: AdminBundle\Menu\AdminMenuBuilder
+
 services:
 #    admin.example:
 #        class: AdminBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+    admingen.menu.default_builder:
+        class: %admin.menu.builder.class%
+        arguments: ["@knp_menu.factory", "@request_stack", 'AdminBundle_Tune_list']
+        tags:
+            - { name: knp_menu.menu_builder, method: sidebarMenu, alias: admingen_sidebar }
+
+

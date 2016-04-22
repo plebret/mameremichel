@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>Liste des morceaux</h1>
+<ul>
+{% for tune in tunes %}
+    <li><a href="{{path('tune',{'pk':tune.id})}}">{{tune.title}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}

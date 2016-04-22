@@ -1,0 +1,68 @@
+generator: admingenerator.generator.doctrine
+params:
+    model: AppBundle\Entity\Player
+    namespace_prefix: 
+    concurrency_lock: ~
+    bundle_name: AdminBundle
+    pk_requirement: ~
+    fields:
+        translations:
+            formType: A2lix\TranslationFormBundle\Form\Type\TranslationsType
+        image:
+            formType: FM\ElfinderBundle\Form\Type\ElFinderType
+            addFormOptions:
+                attr:
+                    class: form-control
+    object_actions:
+        delete: ~
+    batch_actions:
+        delete: ~
+builders:
+    list:
+        params:
+            title: List for AdminBundle
+            display: [firstname, lastname]
+            actions:
+                new: ~
+            object_actions:
+                edit: ~
+                delete: ~
+    excel:
+        params: ~
+        filename: ~
+        filetype: ~
+    new:
+        params:
+            title: New object for AdminBundle
+            display:
+                Generic: 
+                    "row1 col-md-6": [firstname, lastname, image]
+                NONE:
+                    "row2 col-md-12": [translations]
+            actions:
+                save: ~
+                list: ~
+    edit:
+        params:
+            title: "You're editing the object \"%object%\"|{ %object%: Player.lastname }|"
+            display: 
+                Generic: 
+                    "row1 col-md-6": [firstname, lastname, image]
+                NONE:
+                    "row2 col-md-12": [translations]
+            actions:
+                save: ~
+                list: ~
+    show:
+        params:
+            title: "You're viewing the object \"%object%\"|{ %object%: Player.lastname }|"
+            display: ~
+            actions:
+                list: ~
+                new: ~
+    actions:
+        params:
+            object_actions:
+                delete: ~
+            batch_actions:
+                delete: ~
