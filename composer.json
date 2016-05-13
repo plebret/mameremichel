@@ -25,7 +25,8 @@
         "symfony2admingenerator/form-extensions-bundle": "^2.0",
         "helios-ag/fm-elfinder-bundle": "~6",
         "knplabs/doctrine-behaviors": "~1.1",
-        "a2lix/translation-form-bundle": "^2.1"
+        "a2lix/translation-form-bundle": "^2.1",
+        "twig/extensions": "^1.3"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

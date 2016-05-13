@@ -6,16 +6,22 @@
 
 {%
     set navigation = [
-		{
+		    {
             "route_name":"homepage",     
             "match_routes":["homepage"],                                       
             "caption":('menu.home'|trans({}))    
         },
-		{
+    		{
             "route_name":"tunes",     
             "match_routes":["tunes","tune"],                                       
             "caption":('menu.music'|trans({}))    
+        },
+    		{
+            "route_name":"events",     
+            "match_routes":["events","event"],                                       
+            "caption":('menu.agenda'|trans({}))    
         }
+        
     ]
 %}
   

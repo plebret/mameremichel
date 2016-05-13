@@ -51,7 +51,11 @@ class Contact {
      */ 
     protected $message;
     
-    
+    /**
+     * langue de visite utilisée au moment de la prise de contact
+     * 
+     * @ORM\Column(type="string", length=5, nullable=true)
+     */ 
     protected $locale;
     
     public function getId() {
@@ -92,5 +96,13 @@ class Contact {
     
     public function setMessage($message) {
         $this->message = $message;
+    }
+    
+    public function getLocale() {
+        return $this->locale;
+    }    
+    
+    public function setLocale($locale) {
+        $this->locale = $locale;
     }
 }

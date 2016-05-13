@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>{{event.getTitle}}</h1>
+<strong>{{event.date|localizeddate}}</strong>
+<h2>Where</h2>
+<p>
+    {{event.position}}
+</p>
+<h2>More</h2>
+<p>
+    {{event.getDescription|nl2br}}
+</p>
+<img src="{{event.image}}">
+{% endblock %}

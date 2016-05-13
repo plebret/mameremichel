@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+<h1>Agenda</h1>
+<ul>
+{% for event in events %}
+    <li>{{event.date|localizeddate}} : <a href="{{path('event',{'pk':event.id})}}">{{event.getTitle}}</a></li>
+{% endfor %}
+</ul>
+{% endblock %}
